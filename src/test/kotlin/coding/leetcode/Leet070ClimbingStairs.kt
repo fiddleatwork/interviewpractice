@@ -12,25 +12,22 @@ fun climbStairs(n: Int, route: List<Int>): Int {
         return 1
     }
 
-    return if (cache.contains(n - 1)) {
-        cache[n - 1]!!
-    } else {
-        climbStairs(n - 1, route + 1).also {
-            cache[n - 1] = it
-        }
-    } + if (n >= 2) {
-        if (cache.contains(n - 2)) {
-            cache[n - 2]!!
+    return callCachedClimb(n, 1, route) +
+        if (n >= 2) {
+            callCachedClimb(n, 2, route)
         } else {
-            climbStairs(n - 2, route + 2).also {
-                cache[n - 2] = it
-            }
+            0
         }
-    } else {
-        0
+
+
+}
+
+private fun callCachedClimb(n: Int, steps: Int, route: List<Int>) = if (cache.contains(n - steps)) {
+    cache[n - steps]!!
+} else {
+    climbStairs(n - steps, route + steps).also {
+        cache[n - steps] = it
     }
-
-
 }
 
 fun climbStairs(n: Int): Int {
