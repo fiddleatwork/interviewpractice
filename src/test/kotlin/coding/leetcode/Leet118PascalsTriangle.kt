@@ -4,12 +4,8 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 fun nextRowOfPascal(row: List<Int>): List<Int> {
-//    val withZeros = listOf(0) + row + 0
-//    for (i in 0..withZeros.size - 2) {
-//
-//    }
     //[0, 1, 3, 3, 1, 0]
-    //<0,1>, <1,3>, <3,3>
+    //<0,1>, <1,3>, <3,3>, <3,1>, <1,0>
     return (listOf(0) + row + 0).zipWithNext()
         .map {it.first + it.second}
 }
