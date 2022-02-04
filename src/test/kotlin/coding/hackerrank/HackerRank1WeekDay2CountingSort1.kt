@@ -15,7 +15,7 @@ class CountingSort1 {
     }
 
     fun countingSort(arr: Array<Int>): Array<Int> {
-        var countArray = Array<Int>(100) { 0 }
+        val countArray = Array(100) { 0 }
         arr.forEach { a -> countArray[a] = countArray[a] + 1 }
         return countArray
     }
