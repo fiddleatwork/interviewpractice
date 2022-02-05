@@ -152,23 +152,23 @@ class Day2MockTestFlippingTheMatrix {
 
     private fun flippingMatrixRandomSteps(matrix: Array<Array<Int>>): Int {
         println("Starting matrix:\n" + matrix.toPrettyString())
-        //var maxSum = 0
         repeat(1000000) {
             val i = (matrix.indices).random()
             if ((0..1).random() == 0) {
+                // flip random row
                 val (a, b) = matrix.twoSumsOfRow(i)
                 if (b > a) {
                     matrix.reverseRow(i)
                     println("\nFlipped row $i:\n" + matrix.toPrettyString())
                 }
             } else {
+                // flip random column
                 val (a, b) = matrix.twoSumsOfColumn(i)
                 if (b > a) {
                     matrix.reverseColumn(i)
                     println("\nFlipped column $i:\n" + matrix.toPrettyString())
                 }
             }
-            //maxSum = max(maxSum, matrix.sumUpperLeftQuadrant())
         }
         return matrix.sumUpperLeftQuadrant()
     }
