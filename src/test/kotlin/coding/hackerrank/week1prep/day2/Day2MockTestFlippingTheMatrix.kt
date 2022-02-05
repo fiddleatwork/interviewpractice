@@ -4,9 +4,10 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 /**
- * I didn't complete the test within the time allotted (24 minutes) and no longer have access to the
- * test page, so I can't see the details of the question.  I get a different result, but it looks ok to me
- * and since I can't compare it with their example test case, I have to pass on this one.
+ * I have three algorithms.
+ * RandomSteps makes a random reversal and does this n times, and it sometimes find the optimal solution.
+ * FullAlgo doesn't find the optimal solution because it does rows then columns and to be optimal it has to be a mix of these.
+ * And then the optimal which uses a pattern to determine the max sum.
  */
 class Day2MockTestFlippingTheMatrix {
 
@@ -32,7 +33,7 @@ class Day2MockTestFlippingTheMatrix {
     @Test
     fun `test case 2`() {
         assertThat(
-            flippingMatrix(
+            flippingMatrixRandomSteps(
                 test2Matrix
             )
         ).isEqualTo(414)
@@ -130,10 +131,10 @@ class Day2MockTestFlippingTheMatrix {
         // 5 6 7 8
         // 9 1 2 3
         // 4 5 6 7
-        for (i in 0 until size/2) {
+        for (i in 0 until size / 2) {
             val temp = this[r][i]
-            this[r][i] = this[r][size-1-i]
-            this[r][size-1-i] = temp
+            this[r][i] = this[r][size - 1 - i]
+            this[r][size - 1 - i] = temp
         }
     }
 
@@ -144,29 +145,69 @@ class Day2MockTestFlippingTheMatrix {
         // 4 5 6 7
         for (i in 0 until size / 2) {
             val temp = this[i][c]
-            this[i][c] = this[size-1-i][c]
-            this[size-1-i][c] = temp
+            this[i][c] = this[size - 1 - i][c]
+            this[size - 1 - i][c] = temp
         }
     }
 
-    private fun flippingMatrix(matrix: Array<Array<Int>>): Int {
-        //println("Starting matrix:\n" + matrix.toPrettyString())
+    private fun flippingMatrixRandomSteps(matrix: Array<Array<Int>>): Int {
+        println("Starting matrix:\n" + matrix.toPrettyString())
+        //var maxSum = 0
+        repeat(1000000) {
+            val i = (matrix.indices).random()
+            if ((0..1).random() == 0) {
+                val (a, b) = matrix.twoSumsOfRow(i)
+                if (b > a) {
+                    matrix.reverseRow(i)
+                    println("\nFlipped row $i:\n" + matrix.toPrettyString())
+                }
+            } else {
+                val (a, b) = matrix.twoSumsOfColumn(i)
+                if (b > a) {
+                    matrix.reverseColumn(i)
+                    println("\nFlipped column $i:\n" + matrix.toPrettyString())
+                }
+            }
+            //maxSum = max(maxSum, matrix.sumUpperLeftQuadrant())
+        }
+        return matrix.sumUpperLeftQuadrant()
+    }
+
+    private fun flippingMatrixFullAlgo(matrix: Array<Array<Int>>): Int {
+        println("Starting matrix:\n" + matrix.toPrettyString())
         for (i in matrix.indices) {
             val (a, b) = matrix.twoSumsOfRow(i)
             if (b > a) {
                 matrix.reverseRow(i)
-                //println("\nFlipped row $i:\n" + matrix.toPrettyString())
+                println("\nFlipped row $i:\n" + matrix.toPrettyString())
+                break
             }
         }
         for (i in matrix.indices) {
             val (a, b) = matrix.twoSumsOfColumn(i)
             if (b > a) {
                 matrix.reverseColumn(i)
-                //println("\nFlipped column $i:\n" + matrix.toPrettyString())
+                println("\nFlipped column $i:\n" + matrix.toPrettyString())
+                break
             }
         }
-
-        //println("\nFinal:\n" + matrix.toPrettyString())
+        println("\nFinal:\n" + matrix.toPrettyString())
         return matrix.sumUpperLeftQuadrant()
     }
+
+    private fun flippingMatrix(matrix: Array<Array<Int>>): Int {
+        var sum = 0
+        for (i in 0 until matrix.size / 2) {
+            for (j in 0 until matrix.size / 2) {
+                sum += listOf(
+                    matrix[i][j],
+                    matrix[i][matrix.size - 1 - j],
+                    matrix[matrix.size - 1 - i][j],
+                    matrix[matrix.size - 1 - i][matrix.size - 1 - j]
+                ).maxOrNull()!!
+            }
+        }
+        return sum
+    }
+
 }
