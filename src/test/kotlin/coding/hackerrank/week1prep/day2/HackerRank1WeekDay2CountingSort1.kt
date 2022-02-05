@@ -1,4 +1,4 @@
-package coding.leetcode
+package coding.hackerrank.week1prep.day2
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
