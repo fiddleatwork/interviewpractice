@@ -6,8 +6,7 @@ import java.util.*
 class SimpleTextEditor {
     @Test
     fun `example 1`() {
-        val stack = Stack<String>()
-        stack.push("")
+        val editor = Editor()
         """
 8
 1 abc
@@ -22,34 +21,67 @@ class SimpleTextEditor {
             .lines()
             .map { it.trim() }
             .drop(1)
-            .forEach { processInputLine(it, stack) }
+            .forEach { processInputLine(it, editor) }
     }
 
     fun main(args: Array<String>) {
         val numberQueries = readLine()!!.toInt()
-        val stack = Stack<String>()
-        stack.push("")
+        val history = Editor()
         (0 until numberQueries).forEach { _ ->
-            processInputLine(readLine()!!, stack)
+            processInputLine(readLine()!!, history)
         }
 
     }
 
-    private fun processInputLine(line: String, stack: Stack<String>) {
+    interface Undo {
+        fun undo(s: StringBuilder)
+    }
+
+    data class UndoAppend(
+        val previousSize: Int
+    ) : Undo {
+        override fun undo(s: StringBuilder) {
+            s.setLength(previousSize)
+        }
+    }
+
+    data class UndoRemove(
+        val removedText: String
+    ) : Undo {
+        override fun undo(s: StringBuilder) {
+            s.append(removedText)
+        }
+    }
+
+    data class Editor(
+        val value: StringBuilder = StringBuilder(""),
+        val history: Stack<Undo> = Stack()
+    ) {
+        fun append(s: String) {
+            history.push(UndoAppend(value.length))
+            value.append(s)
+        }
+
+        fun removeLast(n: Int) {
+            val range = value.length - n until value.length
+            history.push(UndoRemove(value.substring(range)))
+            value.setLength(range.first)
+        }
+
+        fun get(n: Int) = value[n]
+
+        fun undo() {
+            history.pop().undo(value)
+        }
+    }
+
+    private fun processInputLine(line: String, editor: Editor) {
         val tokens = line.split(" ")
-        when (tokens[0]) {
-            "1" -> {
-                stack.push(stack.peek() + tokens[1])
-            }
-            "2" -> {
-                stack.peek().let { s ->
-                    stack.push(s.removeRange(s.length - tokens[1].toInt() until s.length))
-                }
-            }
-            "3" -> println(stack.peek()[tokens[1].toInt() - 1])
-            "4" -> {
-                stack.pop()
-            }
+        when (tokens[0].toInt()) {
+            1 -> editor.append(tokens[1])
+            2 -> editor.removeLast(tokens[1].toInt())
+            3 -> println(editor.get(tokens[1].toInt() - 1))
+            4 -> editor.undo()
         }
     }
 }
