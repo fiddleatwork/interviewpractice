@@ -6,8 +6,8 @@ import java.util.*
 class SimpleTextEditor {
     @Test
     fun `example 1`() {
-        val s = StringBuilder("")
-        val previousS = Stack<String>()
+        val stack = Stack<String>()
+        stack.push("")
         """
 8
 1 abc
@@ -22,34 +22,33 @@ class SimpleTextEditor {
             .lines()
             .map { it.trim() }
             .drop(1)
-            .forEach { processInputLine(it, s, previousS) }
+            .forEach { processInputLine(it, stack) }
     }
 
     fun main(args: Array<String>) {
         val numberQueries = readLine()!!.toInt()
-        var s = StringBuilder("")
-        var previousS = Stack<String>()
+        val stack = Stack<String>()
+        stack.push("")
         (0 until numberQueries).forEach { _ ->
-            processInputLine(readLine()!!, s, previousS)
+            processInputLine(readLine()!!, stack)
         }
 
     }
 
-    private fun processInputLine(line: String, s: StringBuilder, stack: Stack<String>) {
+    private fun processInputLine(line: String, stack: Stack<String>) {
         val tokens = line.split(" ")
         when (tokens[0]) {
             "1" -> {
-                stack.push(s.toString())
-                s.append(tokens[1])
+                stack.push(stack.peek() + tokens[1])
             }
             "2" -> {
-                stack.push(s.toString())
-                s.delete(s.length - tokens[1].toInt(), s.length)
+                stack.peek().let { s ->
+                    stack.push(s.removeRange(s.length - tokens[1].toInt() until s.length))
+                }
             }
-            "3" -> println(s[tokens[1].toInt() - 1])
+            "3" -> println(stack.peek()[tokens[1].toInt() - 1])
             "4" -> {
-                s.clear()
-                s.append(stack.pop())
+                stack.pop()
             }
         }
     }
