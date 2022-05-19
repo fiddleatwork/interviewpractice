@@ -17,7 +17,7 @@ data class ListNode(
         if (next == null) {
             "${`val`}"
         } else {
-            "${`val`},${next!!.toStringHelper()},"
+            "${`val`},${next!!.toStringHelper()}"
         }
 }
 
