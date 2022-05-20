@@ -25,7 +25,7 @@ class Leet026RemoveDuplicatesFromSortedArray {
     }
 
     @Test
-    fun `example2`() {
+    fun example2() {
         val nums = intArrayOf(
             0, 0, 1, 1, 1, 2, 2, 3, 3, 4
         )
@@ -42,7 +42,7 @@ class Leet026RemoveDuplicatesFromSortedArray {
     }
 
     @Test
-    fun `example1`() {
+    fun example1() {
         val nums = intArrayOf(
             1, 1, 2
         )
