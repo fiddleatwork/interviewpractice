@@ -35,7 +35,7 @@ class Leet322CoinChange {
             }
             .minOrNull()!!
             .also {
-                println("Got $it coins for $amount")
+                //println("Got $it coins for $amount")
                 cache[Pair(amount, count)] = it
 //                println("Cache $cache")
             }
@@ -105,6 +105,16 @@ class Leet322CoinChange {
                 intArrayOf(1, 3, 4, 5), 7
             )
         ).isEqualTo(2)
+    }
+
+
+    @Test
+    fun `tle`() {
+        assertThat(
+            coinChange(
+                intArrayOf(3,7,405,436), 8839
+            )
+        ).isEqualTo(25)
     }
 
 }
