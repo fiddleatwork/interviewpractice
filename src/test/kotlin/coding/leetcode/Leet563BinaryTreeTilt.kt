@@ -2,7 +2,6 @@ package coding.leetcode
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import kotlin.math.abs
 
 //data class TreeNode(var `val`: Int, val left: TreeNode? = null, val right: TreeNode? = null)
 
