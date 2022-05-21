@@ -5,11 +5,23 @@ import org.junit.jupiter.api.Test
 
 class Leet322CoinChange {
 
+    // for BFTD
     val cache = mutableMapOf<Pair<Int, Int>, Int>()
 
     fun coinChange(coins: IntArray, amount: Int): Int {
-        return coinChange(coins, amount, 0).let {
-            if(it == Int.MAX_VALUE) {
+        val default = amount + 1
+        val dp = (1..amount).associateWith { default }.toMutableMap()
+        dp[0] = 0
+        (1..amount).forEach { a ->
+            coins.forEach { c ->
+                if (a - c >= 0) {
+                    dp[a] = Math.min(dp[a]!!, 1 + dp[a - c]!!)
+                }
+            }
+        }
+        //println("coins = ${coins.toList()}  DP = ${dp.filterValues { it < default }}")
+        return dp[amount]!!.let{
+            if(it == default) {
                 -1
             } else {
                 it
@@ -17,7 +29,17 @@ class Leet322CoinChange {
         }
     }
 
-    fun coinChange(coins: IntArray, amount: Int, count: Int): Int {
+    fun coinChangeBruteForceTopDown(coins: IntArray, amount: Int): Int {
+        return coinChangeBruteForceTopDown(coins, amount, 0).let {
+            if (it == Int.MAX_VALUE) {
+                -1
+            } else {
+                it
+            }
+        }
+    }
+
+    fun coinChangeBruteForceTopDown(coins: IntArray, amount: Int, count: Int): Int {
         if (cache.contains(Pair(amount, count))) {
             return cache[Pair(amount, count)]!!
         }
@@ -27,10 +49,10 @@ class Leet322CoinChange {
         return coins
             .map { c ->
                 val newAmount = amount - c
-                if(newAmount < 0) {
+                if (newAmount < 0) {
                     Int.MAX_VALUE
                 } else {
-                coinChange(coins, newAmount, count + 1)
+                    coinChangeBruteForceTopDown(coins, newAmount, count + 1)
                 }
             }
             .minOrNull()!!
@@ -112,7 +134,7 @@ class Leet322CoinChange {
     fun `tle`() {
         assertThat(
             coinChange(
-                intArrayOf(3,7,405,436), 8839
+                intArrayOf(3, 7, 405, 436), 8839
             )
         ).isEqualTo(25)
     }
