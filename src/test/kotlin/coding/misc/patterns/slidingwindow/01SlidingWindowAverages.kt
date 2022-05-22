@@ -1,9 +1,9 @@
-package coding.misc.patterns
+package coding.misc.patterns.slidingwindow
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class `01SlidingWindow` {
+class `01SlidingWindowAverages` {
 
     private fun List<Int>.averages(k: Int): List<Double> {
         val averages = mutableListOf<Double>()

@@ -1,4 +1,4 @@
-package coding.misc.patterns
+package coding.misc.patterns.slidingwindow
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
