@@ -1,4 +1,4 @@
-package coding.misc.patterns.twopointers
+package coding.educative.patterns.twopointers
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
