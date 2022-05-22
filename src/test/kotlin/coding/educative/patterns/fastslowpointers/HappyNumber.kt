@@ -9,7 +9,7 @@ import kotlin.math.pow
 
 class HappyNumber {
 
-    private fun Int.happyNumber(): Boolean {
+    private fun Int.happyNumberMapMethod(): Boolean {
         val map = mutableMapOf<Int, Int>()
         var n = this
         while (n != 1) {
@@ -22,6 +22,16 @@ class HappyNumber {
 
         }
         return true
+    }
+
+    private fun Int.happyNumber(): Boolean {
+        var fast = this
+        var slow = this
+        do {
+            fast = fast.sumOfSquaresOfDigits().sumOfSquaresOfDigits()
+            slow = slow.sumOfSquaresOfDigits()
+        } while (fast != slow)
+        return fast == 1
     }
 
     fun Int.sumOfSquaresOfDigits(): Int =
