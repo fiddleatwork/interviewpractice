@@ -12,14 +12,13 @@ class ReverseLinkedList {
         }
         var previous: ListNode? = null
         var current: ListNode? = this
-        while(current?.next != null) {
+        while(current != null) {
             val next = current.next
             current.next = previous
             previous = current
             current = next
         }
-        current?.next = previous
-        return current
+        return previous
     }
 
     @Test
