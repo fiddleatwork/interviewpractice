@@ -23,7 +23,7 @@ class Permutations {
     @Test
     fun example2() {
         assertThat(
-            permutations(setOf(1, 2, 3).toList())
+            permutations(listOf(1, 2, 3))
         ).isEqualTo(
             listOf(
                 listOf(1, 2, 3),
@@ -34,5 +34,13 @@ class Permutations {
                 listOf(3, 2, 1),
             )
         )
+    }
+
+    @Test
+    fun `permutations of 4 item list`() {
+        listOf(1, 2, 3, 4).also{ l ->
+            println("Permutations of $l = ${permutations(l).joinToString(",", "\n", "\n")}")
+
+        }
     }
 }
