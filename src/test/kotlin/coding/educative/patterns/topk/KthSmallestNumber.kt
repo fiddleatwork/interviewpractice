@@ -8,14 +8,14 @@ class KthSmallestNumber {
 
     private fun List<Int>.smallest(k: Int): Int {
         val maxHeap = PriorityQueue<Int> { a, b -> b - a }
-        maxHeap.addAll(subList(0,k-1))
-        subList(k, size).forEach{ n->
-            if(n < maxHeap.peek()) {
+        maxHeap.addAll(subList(0, k))
+        subList(k, size).forEach { n ->
+            if (n < maxHeap.peek()) {
                 maxHeap.poll()
                 maxHeap.add(n)
             }
         }
-        return maxHeap.toList().last()
+        return maxHeap.peek()
     }
 
     @Test
