@@ -1,4 +1,4 @@
-package coding.modifiedbinarysearch
+package coding.educative.patterns.modifiedbinarysearch
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
