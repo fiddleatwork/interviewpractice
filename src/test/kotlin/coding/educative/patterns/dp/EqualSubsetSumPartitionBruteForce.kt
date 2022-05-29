@@ -3,7 +3,7 @@ package coding.educative.patterns.dp
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class EqualSubsetSumPartition {
+class EqualSubsetSumPartitionBruteForce {
 
     private fun List<Int>.hasEqualSubsetPartition(): Boolean {
         val s = sum()
@@ -22,7 +22,7 @@ class EqualSubsetSumPartition {
         }
         if (get(index) <= target) {
             if (hasEqualSubsetPartition(target - get(index), index + 1)) {
-                println("n = ${get(index)}")
+                //println("n = ${get(index)}")
                 return true
             }
         }
@@ -43,4 +43,11 @@ class EqualSubsetSumPartition {
         ).isFalse
     }
 
+    @Test
+    fun `big example`() {
+        val base = List(1000) { i -> i + 1 }
+        assertThat(
+            (base + base + base + base + base).shuffled().hasEqualSubsetPartition()
+        ).isTrue
+    }
 }
