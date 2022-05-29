@@ -9,6 +9,15 @@ import kotlin.math.max
 class LeetCode628MaxProduct3Numbers {
 
     fun maximumProduct(nums: IntArray): Int {
+        val sorted = nums.sorted()
+        return Math.max(
+            sorted[0] * sorted[1] * sorted.last(),
+            sorted.subList(nums.size-3, nums.size).fold(1) { acc, n -> acc * n }
+        )
+    }
+
+
+    fun maximumProductHeap(nums: IntArray): Int {
         val minHeap = PriorityQueue<Int> { a, b -> a - b }
         val maxHeap = PriorityQueue<Int> { a, b -> b - a }
         (0 until 3).forEach { i ->
