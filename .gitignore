@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+src/test/kotlin/coding/vivun/
+src/test/kotlin/coding/amazon/
+!**/src/test/**/vivun/
+!**/src/test/**/amazon/
