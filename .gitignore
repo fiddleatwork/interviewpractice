@@ -34,5 +34,7 @@ build/
 
 src/test/kotlin/coding/vivun/
 src/test/kotlin/coding/amazon/
+src/test/kotlin/coding/missionlane/
+
 !**/src/test/**/vivun/
 !**/src/test/**/amazon/
