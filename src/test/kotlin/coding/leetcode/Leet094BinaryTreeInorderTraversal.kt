@@ -3,9 +3,9 @@ package coding.leetcode
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-data class TreeNode(var `val`: Int, val left: TreeNode? = null, val right: TreeNode? = null) {
+data class TreeNode(var `val`: Int, var left: TreeNode? = null, var right: TreeNode? = null) {
     override fun toString(): String {
-        return toStringPretty(0)
+        return "\n" + toStringPretty(0)
     }
 
     fun toStringPretty(indent: Int): String {
