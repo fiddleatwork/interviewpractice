@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 data class TreeNode(var `val`: Int, var left: TreeNode? = null, var right: TreeNode? = null) {
+
     override fun toString(): String {
         return "\n" + toStringPretty(0)
     }
@@ -11,7 +12,7 @@ data class TreeNode(var `val`: Int, var left: TreeNode? = null, var right: TreeN
     fun toStringPretty(indent: Int): String {
         val indentString = StringBuilder("")
         repeat(indent) { indentString.append("\t") }
-        return "$indentString$`val`\n$indentString\t${left?.toStringPretty(indent+1)?:""}\n$indentString\t${right?.toStringPretty(indent+1)?:""}"
+        return "$indentString$`val`\n$indentString\t${right?.toStringPretty(indent+1)?:""}\n$indentString\t${left?.toStringPretty(indent+1)?:""}"
     }
 }
 
