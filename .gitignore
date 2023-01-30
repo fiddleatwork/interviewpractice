@@ -32,5 +32,6 @@ build/
 ### VS Code ###
 .vscode/
 
-!**/src/test/**/companies/
+/src/test/kotlin/coding/companies/**
+
 
