@@ -1,3 +1,13 @@
-Coding problems to practice for interviews
-Using Cracking the Coding Interview & Leetcode
+My solutions to coding problems to practice for interviews
+Using Cracking the Coding Interview, Leetcode, HackerRank, and other sources.
+
+These are done in Kotlin in a "functional" style:
+  - immutable whenever possible
+  - pure functions
+  - streams
+
+Some problems don't lend themselves to this approach and must modify variables, use iterative loops, etc.
+
+
+
 
