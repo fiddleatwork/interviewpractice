@@ -75,7 +75,7 @@ class Leet005LongestPalindromicSubstring {
 
 
     private fun String.longestPalindromicSubstring(): String {
-        if (length == 0) {
+        if (isEmpty()) {
             return ""
         }
         if(length == 1) {
