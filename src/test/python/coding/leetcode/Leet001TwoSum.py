@@ -1,13 +1,13 @@
 import unittest
 from types import MappingProxyType
-
 from assertpy import assert_that
+from typing import Tuple
 
 
 class MyTestCase(unittest.TestCase):
 
     @staticmethod
-    def two_sum_brute(nums: int(), target: int) -> int():
+    def two_sum_brute(nums: Tuple[int, ...], target: int) -> Tuple[int, ...]:
         for i, m in enumerate(nums):
             for j, n in enumerate(nums):
                 if i != j and m + n == target:
@@ -15,7 +15,7 @@ class MyTestCase(unittest.TestCase):
         return ()
 
     @staticmethod
-    def two_sum(nums: int(), target: int) -> int():
+    def two_sum(nums: Tuple[int, ...], target: int) -> Tuple[int, ...]:
         lookup = MappingProxyType({target - nums[i]: i for i, _ in enumerate(nums)})
         for i, n in enumerate(nums):
             m = lookup.get(n, None)
