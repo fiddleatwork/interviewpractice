@@ -2,9 +2,6 @@ package coding.leetcode
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import java.lang.Math.pow
-import kotlin.math.abs
-import kotlin.math.pow
 
 
 class Leet013RomanToInteger {
@@ -24,16 +21,16 @@ class Leet013RomanToInteger {
         assertThat(romanToInt("MCMXCIV")).isEqualTo(1994)
     }
 
-    // I prefer not to have mutable properties.. but it sure is easier this way.
-    var i = 0
-    var result = 0
+    private fun romanToInt(s: String): Int {
 
-    fun increment(amount: Int, counterIncrement: Int) {
-        result += amount
-        i += counterIncrement
-    }
+        var i = 0
+        var result = 0
 
-    fun romanToInt(s: String): Int {
+        fun increment(amount: Int, counterIncrement: Int) {
+            result += amount
+            i += counterIncrement
+        }
+
         while (i < s.length) {
             val sub2 = if (i < s.length - 1) {
                 s.substring(i..(i + 1))
@@ -61,8 +58,5 @@ class Leet013RomanToInteger {
             }
         }
         return result
-        //.also {
-        //  println("result = $result")
-        //}
     }
 }
