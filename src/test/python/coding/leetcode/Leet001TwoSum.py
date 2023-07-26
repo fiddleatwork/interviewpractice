@@ -4,7 +4,7 @@ from assertpy import assert_that
 from typing import Tuple
 
 
-class MyTestCase(unittest.TestCase):
+class Leet001TwoSum(unittest.TestCase):
 
     @staticmethod
     def two_sum_brute(nums: Tuple[int, ...], target: int) -> Tuple[int, ...]:
@@ -26,8 +26,8 @@ class MyTestCase(unittest.TestCase):
     @staticmethod
     def test_case_1():
         assert_that(
-            MyTestCase.two_sum((2, 7, 11, 15), 9)
-        ).is_equal_to((0, 1))  # add assertion here
+            Leet001TwoSum.two_sum((2, 7, 11, 15), 9)
+        ).is_equal_to((0, 1))
 
 
 if __name__ == '__main__':
