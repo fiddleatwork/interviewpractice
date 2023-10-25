@@ -3,7 +3,7 @@ package coding.leetcode
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class Leet2899LastVisitedIntegersTest {
+class Leet2899LastVisitedIntegers {
 
     fun lastVisitedIntegers(words: List<String>): List<Int> {
 
@@ -11,7 +11,7 @@ class Leet2899LastVisitedIntegersTest {
         val result = mutableListOf<Int>()
         val numbers = mutableListOf<Int>()
         var index = -1
-        words.forEachIndexed {i,s ->
+        words.forEach {s ->
             if(s == "prev") {
                 if(index < 0) {
                     result.add(-1)
