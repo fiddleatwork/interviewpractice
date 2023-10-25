@@ -3,10 +3,9 @@ package coding.leetcode
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.util.*
-import kotlin.math.abs
 import kotlin.math.max
 
-class LeetCode628MaxProduct3Numbers {
+class Leet628MaxProduct3Numbers {
 
     fun maximumProduct(nums: IntArray): Int {
         val sorted = nums.sorted()
