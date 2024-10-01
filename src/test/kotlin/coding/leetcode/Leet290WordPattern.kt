@@ -10,17 +10,20 @@ class Leet290WordPatternTest {
     }
 
     private fun String.matches(pattern: String): Boolean {
-        val lookup = mutableMapOf<Char, String>()
+        val lookupWord = mutableMapOf<Char, String>()
+        val lookupLetter = mutableMapOf<String, Char >()
         val tokens = split(" ")
-        return this == pattern.asIterable().mapIndexed {i, c ->
+        if(tokens.size != pattern.length) {
+            return false
+        }
+        return pattern.asIterable().mapIndexed {i, c ->
             if(i >= tokens.size) {
                 return false
             }
-            if(c !in lookup.keys && tokens[i] !in lookup.values) {
-                lookup[c] = tokens[i]
-            }
-            lookup[c]
-        }.joinToString(" ")
+            lookupLetter.putIfAbsent(tokens[i], c)
+            lookupWord.putIfAbsent(c, tokens[i])
+            lookupWord[c] == tokens[i] && lookupLetter[tokens[i]] == c
+        }.all{it}
     }
 
     @Test
@@ -41,6 +44,11 @@ class Leet290WordPatternTest {
     @Test
     fun abba() {
         assertThat("dog dog dog dog".matches("abba")).isFalse
+    }
+
+    @Test
+    fun aaa() {
+        assertThat("aa aa aa aa".matches("aaa")).isFalse
     }
 }
 
