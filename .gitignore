@@ -33,6 +33,7 @@ build/
 .vscode/
 
 src/test/kotlin/coding/companies/
+src/main/kotlin/coding/companies/
 
 __pycache__
 
