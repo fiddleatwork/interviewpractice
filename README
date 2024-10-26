@@ -4,17 +4,16 @@ Using Cracking the Coding Interview, Leetcode, HackerRank, and other sources.
 The main language I'm using is Kotlin, in a "functional" style:
   - immutable whenever possible
   - pure functions
-  - streams
+  - streams & function chaining
 
 Some problems don't lend themselves to this approach and must modify variables, use iterative loops, etc.
 Or would use something more advanced but less easy to understand so I opted for the simple approach.
 
-I'm also adding some solutions in Python as well.  I'm not an expert in Python
-so this is a learning experience.  My goal is to program in Python in a functional style,
+I'm also adding some solutions in Python as well.  My goal is to program in Python in a functional style,
 similar to Kotlin.  However Python isn't as "fluid" as Kotlin so far which makes this difficult.
 
 There are also a few solutions in Java which I did while preparing for Java interviews.  I find
-it very difficult to go back to Java after Kotlin.
+it difficult to go back to Java after Kotlin.
 
 
 
