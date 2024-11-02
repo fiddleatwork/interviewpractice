@@ -55,7 +55,7 @@ fun String.solveX(value: String): String {
 
 fun List<String>.moveXToLeftSide(): List<String> {
     val equalsIndex = indexOfFirst { it == "=" }
-    val xIndex = indexOfFirst { it == "x" }
+    val xIndex = indexOfFirst { it.contains("x") }
     if (xIndex < equalsIndex) {
         return this
     }
