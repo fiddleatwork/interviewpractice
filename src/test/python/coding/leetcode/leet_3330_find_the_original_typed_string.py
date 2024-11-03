@@ -1,10 +1,17 @@
 import unittest
-from itertools import takewhile
+from itertools import takewhile, groupby
 
 from assertpy import assert_that
 
 
 class Leet3330FindTheOriginalTypedString(unittest.TestCase):
+
+
+    def find_possible_words_count_optimal(self, word: str) -> int:
+        total = 1
+        for g, t in groupby(word):
+            total += len(list(t)) - 1
+        return total
 
     @staticmethod
     def find_possible_words_count(word: str) -> int:
@@ -40,3 +47,6 @@ class Leet3330FindTheOriginalTypedString(unittest.TestCase):
 
     def test_example_3(self) -> None:
         assert_that(self.find_possible_words_count("aaaa")).is_equal_to(4)
+
+    def test_ere(self) -> None:
+        assert_that(self.find_possible_words_count("ere")).is_equal_to(1)
