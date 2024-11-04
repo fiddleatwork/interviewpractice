@@ -34,7 +34,7 @@ class Leet110BalancedBinaryTree {
 
     private fun List<Int?>.fillChildren(nodes: List<TreeNode?>) {
         val pairs = zipWithNext()
-            .filterIndexed {i, p -> i%2==0}
+            .filterIndexed {i, _ -> i%2==0}
         nodes.forEachIndexed { i, n ->
             if (n != null && pairs.size -1 >= i) {
                 n.left = pairs[i].first?.let { TreeNode(it) }

@@ -7,7 +7,7 @@ class MissingInteger {
 
     private fun solution(A: IntArray): Int {
         //val map = mutableMapOf<Int, Boolean>()
-        val map = A.associateWith { a -> true }
+        val map = A.associateWith { _ -> true }
         (1 until 100000).forEach { n ->
             if(!map.containsKey(n)) {
                 return n

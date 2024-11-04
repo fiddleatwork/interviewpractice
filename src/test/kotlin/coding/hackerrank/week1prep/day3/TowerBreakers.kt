@@ -49,7 +49,7 @@ class TowerBreakers {
         return if (m == 1 || (n % 2 == 0)) 2 else 1
     }
 
-    fun main(args: Array<String>) {
+    fun main() {
         val t = readLine()!!.trim().toInt()
 
         for (tItr in 1..t) {

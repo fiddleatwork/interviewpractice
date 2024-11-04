@@ -24,9 +24,9 @@ class LonelyInteger {
             ?.first() ?: error("Lonely integer not found.")
     }
 
-    fun main(args: Array<String>) {
-        val n = readLine()!!.trim().toInt()
-        val a = readLine()!!.trimEnd().split(" ").map { it.toInt() }.toTypedArray()
+    fun main() {
+        readln().trim().toInt()
+        val a = readln().trimEnd().split(" ").map { it.toInt() }.toTypedArray()
         val result = lonelyinteger(a)
         println(result)
     }

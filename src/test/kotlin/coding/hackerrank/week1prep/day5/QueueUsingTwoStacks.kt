@@ -26,7 +26,7 @@ class QueueUsingTwoStacks {
     @Test
     fun `test case 7`() {
         val queue = Queue<String>()
-        val input = """
+        """
 1 507001807
 1 659951706
 1 988466222
@@ -100033,11 +100033,11 @@ class QueueUsingTwoStacks {
     }
 }
 
-fun main(args: Array<String>) {
-    val numberQueries = readLine()!!.toInt()
+fun main() {
+    val numberQueries = readln().toInt()
     val queue = Queue<String>()
     (0 until numberQueries).forEach { _ ->
-        processInputLine(readLine()!!, queue)
+        processInputLine(readln(), queue)
     }
 }
 

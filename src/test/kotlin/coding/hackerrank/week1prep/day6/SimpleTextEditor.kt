@@ -24,7 +24,7 @@ class SimpleTextEditor {
             .forEach { processInputLine(it, editor) }
     }
 
-    fun main(args: Array<String>) {
+    fun main() {
         val numberQueries = readLine()!!.toInt()
         val history = Editor()
         (0 until numberQueries).forEach { _ ->

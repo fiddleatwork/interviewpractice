@@ -7,7 +7,7 @@ import kotlin.math.pow
 class Leet202HappyNumber {
 
     private val Int.sumOfSquaresOfDigits: Int
-        get() = toString().map { i -> ((i.toDouble() - 48).pow(2)).toInt() }.sum()
+        get() = toString().map { i -> ((i.code.toDouble() - 48).pow(2)).toInt() }.sum()
 
 
     private tailrec fun isHappy(n: Int, solved: MutableList<Int> = mutableListOf()): Boolean {

@@ -12,8 +12,8 @@ class Leet121BestTimeToBuyAndSellStock {
         } else {
             max(
                 prices.dropLast(1).mapIndexed { i, n ->
-                    prices.drop(i + 1).max()!! - n
-                }.max()!!,
+                    prices.drop(i + 1).max() - n
+                }.max(),
                 0
             )
         }

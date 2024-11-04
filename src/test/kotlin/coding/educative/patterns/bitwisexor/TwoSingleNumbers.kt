@@ -19,7 +19,7 @@ class TwoSingleNumbers {
 
         var num1 = 0
         var num2 = 0
-        val numbersWithSetBit = forEach { n ->
+        forEach { n ->
             if(rightMostSetBit.and(n) == 0) {
                 num1 = num1.xor(n)
             } else {

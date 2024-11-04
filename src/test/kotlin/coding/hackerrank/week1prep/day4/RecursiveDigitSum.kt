@@ -48,7 +48,7 @@ class RecursiveDigitSum {
     }
 
     // Hackerrank is Kotlin 1.3 :(
-    private fun Char.myDigitToInt() = toInt() - '0'.toInt()
+    private fun Char.myDigitToInt() = code - '0'.code
 
     private tailrec fun superDigit(n: String): Int {
         if (n.length == 1) {

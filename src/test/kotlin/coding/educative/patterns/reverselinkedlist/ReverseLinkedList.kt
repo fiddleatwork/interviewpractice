@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Test
 class ReverseLinkedList {
 
     fun ListNode.reversed(): ListNode? {
-        if(this == null) {
-            return null
-        }
         var previous: ListNode? = null
         var current: ListNode? = this
         while(current != null) {

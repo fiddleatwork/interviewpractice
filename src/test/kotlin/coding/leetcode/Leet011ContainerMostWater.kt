@@ -2,6 +2,7 @@ package coding.leetcode
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import kotlin.math.min
 
 
 class Leet011ContainerMostWater {
@@ -32,11 +33,10 @@ class Leet011ContainerMostWater {
     }
 
     private fun List<Int>.mostWaterBruteForce(): Int {
-        val results = mutableMapOf<Pair<Int, Int>, Int>()
         var maxResult = 0
-        for (i in 0 until size) {
+        for (i in indices) {
             for (j in i until size) {
-                val result = (j - i) * Math.min(this[i], this[j])
+                val result = (j - i) * min(this[i], this[j])
                 if (result > maxResult) {
                     maxResult = result
                 }
