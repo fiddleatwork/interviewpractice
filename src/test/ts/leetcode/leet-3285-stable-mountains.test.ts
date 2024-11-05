@@ -1,12 +1,8 @@
 
 function stableMountains(height: number[], threshold: number): number[] {
-    var stableIndices: number[] = []
-    height.forEach((h,i) => {
-        if(i > 0 && height[i-1] > threshold) {
-            stableIndices.push(i)
-        }
-    })
-    return stableIndices
+    return height
+        .map((_,i) => i)
+        .filter(i => i > 0 && height[i-1] > threshold)
 };
 
 
