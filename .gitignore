@@ -34,6 +34,7 @@ build/
 
 src/test/kotlin/coding/companies/
 src/main/kotlin/coding/companies/
+src/main/python/coding/companies/
 
 __pycache__
 
